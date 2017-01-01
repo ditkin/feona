@@ -1,0 +1,29 @@
+<html>
+<head>
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+<script type="text/javascript">
+if ('serviceWorker' in navigator) {
+navigator.serviceWorker.register('my-service-worker.js');
+}
+</script>
+</head>
+<style>
+img {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+main-menu {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+</style>
+<img src="steelbackground.jpg">
+<script src="common.js"></script>
+<script src="catGrid.js"></script>
+<script src="catHuge.js"></script>
+<script src="mainMenu.js"></script>
+<main-menu></main-menu>
