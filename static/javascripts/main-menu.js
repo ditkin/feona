@@ -1,10 +1,8 @@
 'use strict';
-require('../styles/index.css');
 
 class MainMenu extends HTMLElement {
 
   createdCallback () {
-    this.mcj = null;
     const shadowRoot = this.attachShadow({ mode: 'open' });
     shadowRoot.innerHTML = `
       <style>
@@ -13,44 +11,73 @@ class MainMenu extends HTMLElement {
         height: 800px;
         display: block;
       }
+      #cat-runt {
+        background: lightgreen;
+      }
       #cat-huge {
-        width: 30%;
-        height: 100px;
-        margin: auto;
-        background: red;
-        border: 3px solid black;
-        border-radius: 2px;
+        background: lightblue;
       }
       #cat-grid {
+        background: red;
+      }
+      #cache-inspector {
+        background: magenta;
+      }
+      .cat-button {
+        line-height: 100px;
+        text-align: center;
+        vertical-align: middle;
         width: 30%;
         height: 100px;
         margin: auto;
-        background: blue;
-        border: 3px solid black;
-        border-radius: 2px;
+        margin-top: 20px;
+        border: 3px solid gray;
+        border-radius: 8px;
       }
         
       </style>
       <div id="app-container">
-        <div id="cat-huge">
-          Click for Cat Hugeness
+        <div class='cat-button' id="cat-huge">
+          Cat Hugeness
         </div>
-        <div id="cat-grid">
-          Click for Cat Gridness
+        <div class='cat-button' id="cat-grid">
+          Cat Gridness
+        </div>
+        <div class='cat-button' id="cat-runt">
+          Cat Runt
+        </div>
+        <div class='cat-button' id="cache-inspector">
+          Cache Inspector
         </div>
       </div>
     `;
 
-    const func = function (e) { this.mountElement(e.currentTarget.id, shadowRoot); };
+    const func = (e) => this.mountElement(e.currentTarget.id, shadowRoot);
+
     shadowRoot.getElementById('cat-grid').addEventListener('click', func.bind(this));
     shadowRoot.getElementById('cat-huge').addEventListener('click', func.bind(this));
+    shadowRoot.getElementById('cat-runt').addEventListener('click', func.bind(this));
+    shadowRoot.getElementById('cache-inspector').addEventListener('click', func.bind(this));
+
+    history.pushState({ elementType: '' }, null, '');
+
+    window.addEventListener('popstate', (e) => {
+      const url = history.state ? history.state.elementType : '';
+      window.location.href = 'https://feona.party/' + url;
+    });
   }
+
 
   mountElement (elementType, shadowRoot) {
     const url = elementType + '.html';
-    history.pushState(null, elementType, url);
+    history.pushState({ elementType }, elementType, url);
+
     const cont = shadowRoot.getElementById('app-container');
-    cont.innerHTML = "<" + elementType + "></" + elementType + ">";
+    cont.innerHTML = this.getElementTagString(elementType);
+  }
+
+  getElementTagString (elementType) {
+    return "<" + elementType + "></" + elementType + ">";
   }
 }
 

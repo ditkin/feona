@@ -9,6 +9,8 @@ module.exports = {
   entry: {
     catGrid: './static/javascripts/cat-grid.js',
     catHuge: './static/javascripts/cat-huge.js',
+    catRunt: './static/javascripts/cat-runtime.js',
+    cacheInspector: './static/javascripts/cache-inspector.js',
     mainMenu: './static/javascripts/main-menu.js'
   },
 
@@ -25,8 +27,14 @@ module.exports = {
       filename: 'my-service-worker.js',
       maximumFileSizeToCacheInBytes: 2000000,
       runtimeCaching: [{
-        urlPattern: /^https:\/\/example\.com\/api/,
-        handler: 'fastest'
+        urlPattern: /^https:\/\/drpem3xzef3kf*/,
+        handler: 'cacheFirst',
+        options: {
+          cache: {
+            maxEntries: 2,
+            name: 'bigcat-cache'
+          }
+        }
       }]
     })
   ],
