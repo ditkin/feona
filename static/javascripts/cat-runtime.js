@@ -1,4 +1,4 @@
-class CatRunt extends HTMLElement {
+class CatRuntime extends HTMLElement {
 
   createdCallback() {
     const shadowRoot = this.attachShadow({ mode: 'open' });
@@ -27,4 +27,4 @@ class CatRunt extends HTMLElement {
   }
 }
 
-document.registerElement('cat-runt', CatRunt);
+document.registerElement('cat-runtime', CatRuntime);

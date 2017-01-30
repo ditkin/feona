@@ -1,14 +1,12 @@
+require('./cache-list.js');
 class CacheInspector extends HTMLElement {
 
   createdCallback() {
     const shadowRoot = this.attachShadow({ mode: 'open' });
     shadowRoot.innerHTML = `
       <style>
-      #clear-cache {
+      #show-cache {
         background: orange;
-      }
-      #go-offline {
-        background: magenta;
       }
       .control-button {
         line-height: 100px;
@@ -16,26 +14,26 @@ class CacheInspector extends HTMLElement {
         vertical-align: middle;
         width: 30%;
         height: 100px;
-        margin: auto;
+        margin-left: 38%;
         margin-top: 20px;
-        border: 3px solid gray;
+        border: 3px solid black;
         border-radius: 8px;
       }
       </style>
-      <div class="control-button" id="clear-cache">
-        Clear Cache
-      </div>
-      <div class="control-button" id="go-offline">
-        Go Offline
+      <div class="control-button" id="show-cache">
+        Show Cache
       </div>
     `;
 
-    shadowRoot.getElementById('clear-cache').addEventListener('click', (e) => {
-      debugger; 
-    });
-
-    shadowRoot.getElementById('go-offline').addEventListener('click', (e) => {
-      debugger; 
+    shadowRoot.getElementById('show-cache').addEventListener('click', (e) => {
+      const list = document.createElement('cache-list');
+      list.id = 'list';
+      const oldList = shadowRoot.getElementById('list')
+      if (oldList) {
+        shadowRoot.replaceChild(list, oldList);
+      } else {
+        shadowRoot.appendChild(list);
+      }
     });
   }
 }
