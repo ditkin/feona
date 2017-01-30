@@ -31,13 +31,13 @@ class CatHuge extends HTMLElement {
       	margin-bottom: 10px;
         flex: 0 1 auto;
         filter: grayscale(95%);
-      	width: 75%;
-      	height: 350px;
-        transition: width 1s ease-out, height 1s ease-in, filter 2s;
+      	width: 60%;
+      	height: 450px;
+        transition: width 0.5s ease-out, height 2s ease-in, filter 2s;
       }
       img:hover {
-        width: 100%
-        height: 150px;
+        width: 100%;
+        height: 600px;
         filter: grayscale(0%);
       }
       </style>

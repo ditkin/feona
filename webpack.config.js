@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     catGrid: './static/javascripts/cat-grid.js',
     catHuge: './static/javascripts/cat-huge.js',
-    catRunt: './static/javascripts/cat-runtime.js',
+    catRuntime: './static/javascripts/cat-runtime.js',
     cacheInspector: './static/javascripts/cache-inspector.js',
     mainMenu: './static/javascripts/main-menu.js'
   },
@@ -28,7 +28,7 @@ module.exports = {
       maximumFileSizeToCacheInBytes: 2000000,
       runtimeCaching: [{
         urlPattern: /^https:\/\/drpem3xzef3kf*/,
-        handler: 'cacheFirst',
+        handler: 'fastest',
         options: {
           cache: {
             maxEntries: 2,

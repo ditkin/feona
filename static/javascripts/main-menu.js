@@ -11,7 +11,7 @@ class MainMenu extends HTMLElement {
         height: 800px;
         display: block;
       }
-      #cat-runt {
+      #cat-runtime {
         background: lightgreen;
       }
       #cat-huge {
@@ -43,8 +43,8 @@ class MainMenu extends HTMLElement {
         <div class='cat-button' id="cat-grid">
           Cat Gridness
         </div>
-        <div class='cat-button' id="cat-runt">
-          Cat Runt
+        <div class='cat-button' id="cat-runtime">
+          Cat Runtime
         </div>
         <div class='cat-button' id="cache-inspector">
           Cache Inspector
@@ -56,7 +56,7 @@ class MainMenu extends HTMLElement {
 
     shadowRoot.getElementById('cat-grid').addEventListener('click', func.bind(this));
     shadowRoot.getElementById('cat-huge').addEventListener('click', func.bind(this));
-    shadowRoot.getElementById('cat-runt').addEventListener('click', func.bind(this));
+    shadowRoot.getElementById('cat-runtime').addEventListener('click', func.bind(this));
     shadowRoot.getElementById('cache-inspector').addEventListener('click', func.bind(this));
 
     history.pushState({ elementType: '' }, null, '');
